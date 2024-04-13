@@ -1,6 +1,20 @@
+import 'package:app/Util/Colors.dart';
+import 'package:app/Util/routes.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'Screens/LoginPage.dart';
+import 'Screens/PlaylistPage.dart';
+import 'Screens/VideoPage.dart';
+import 'firebase_options.dart';
+import 'mainPage.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
@@ -13,6 +27,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'StudyTube',
       debugShowCheckedModeBanner: false,
+      initialRoute: MyRoutes.loginPage,
+      routes: {
+        MyRoutes.loginPage: (context) => LoginPage(),
+        MyRoutes.mainPage: (context) => MainPage(),
+        MyRoutes.playlistPage: (context) => PlaylistPage(),
+        MyRoutes.videoPage: (context) => VideoPage(),
+      },
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -29,7 +50,7 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
         useMaterial3: true,
       ),
     );

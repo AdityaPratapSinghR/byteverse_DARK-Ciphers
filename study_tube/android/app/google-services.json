@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "956496248072",
+    "project_id": "studytube-byte",
+    "storage_bucket": "studytube-byte.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956496248072:android:5c81c8b3628027814ac0bd",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJfCm1snsMoEO6lGBBs9e6WbsCibU__c0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
