@@ -91,6 +91,7 @@ class _PlaylistPageState extends State<PlaylistPage> {
     final String playlistId = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
+      appBar: AppBar(title: Text("Videos"),elevation: 0,),
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
