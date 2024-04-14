@@ -27,35 +27,35 @@ StudyTube provides a curated and distraction-free environment for educational co
 ## Installation and Usage
 
 ## Firebase Hosting 
-**The web version of the app is deployed on Firebase Hosting that can be accessed by any person in the world with the link.**
-**Here you can check the web version of the app yourself:** https://studytube-byte.web.app/
-**Test Id: test@gmail.com**
-**Test Password: test123**
+**The web version of the app is deployed on Firebase Hosting that can be accessed by any person in the world with the link.** <br>
+**Here you can check the web version of the app yourself:** https://studytube-byte.web.app/ <br>
+**Test Id: test@gmail.com** <br>
+**Test Password: test123** <br>
 
 ## Repo Link
 https://github.com/AdityaPratapSinghR/byteverse_DARK-Ciphers.git
 
-**1. Clone the Git Repository**
-`git clone https://github.com/AdityaPratapSinghR/byteverse_DARK-Ciphers.git`
-**2. Resolve Flutter Dependency**
-`flutter pub get`
-**3. Choose your desired environment (emulator, phone, web etc.)**
-**4. Run the Flutter App**
-`flutter run`
+**1. Clone the Git Repository**<br>
+`git clone https://github.com/AdityaPratapSinghR/byteverse_DARK-Ciphers.git`  <br>
+**2. Resolve Flutter Dependency**<br>
+`flutter pub get` <br>
+**3. Choose your desired environment (emulator, phone, web etc.)** <br>
+**4. Run the Flutter App** <br>
+`flutter run` <br>
 
 ## Video Demonstration
-**Android App:** https://youtu.be/UQjy25nshhU
-**Web App:** https://youtu.be/6fHbanTr30c
+**Android App:** https://youtu.be/UQjy25nshhU <br>
+**Web App:** https://youtu.be/6fHbanTr30c <br>
 
 ## Custom Iframe Player
-We created a **custom Iframe Player** for YouTube Player using the iframe that YouTube itself uses as the library for video player was not working for Web.
+We created a **custom Iframe Player** for YouTube Player using the iframe that YouTube itself uses as the library for video player was not working for Web. <br>
 
-### Running Flutter App
+### Running Flutter App <br>
 
-1. Navigate to the app folder.
-2. Resolve Flutter dependencies.
-3. Choose your desired environment (emulator, phone, etc.).
-4. Run the Flutter app.
+1. Navigate to the app folder. <br>
+2. Resolve Flutter dependencies. <br>
+3. Choose your desired environment (emulator, phone, etc.). <br>
+4. Run the Flutter app. <br>
 
 ## Motivation
 
@@ -66,18 +66,18 @@ to prevent this from happening to us and those millions of student we made this 
 ## Objectives
 
 1. **Distraction-free environment**.
-2. **Personalised educational content**.
+2. **Personalised educational content**. 
 3. **User-friendly Interfaces**.
 
-## Project Phases
+## Project Phases 
 
 ### Phase 1: Initial Release
-- Firebase authentication
-- App and Web interfaces for user interaction.
+- Firebase authentication <br>
+- App and Web interfaces for user interaction. <br>
 
 ### Phase 2 (Future Enhancements)
-- Integration of similar study resources based on playlist content.
-- Enabling note-taking at desired timestamps for review later.
+- Integration of similar study resources based on playlist content. <br>
+- Enabling note-taking at desired timestamps for review later. <br>
 
 ## Web and App Interface
 <img src ="https://raw.githubusercontent.com/AdityaPratapSinghR/byteverse_DARK-Ciphers/main/study_tube/assets/images/App%20Images%20(11).png" width=30% height=30%> <img src ="https://raw.githubusercontent.com/AdityaPratapSinghR/byteverse_DARK-Ciphers/main/study_tube/assets/images/App%20Images%20(3).png" width=30% height=30%> 
