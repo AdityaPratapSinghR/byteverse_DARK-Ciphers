@@ -78,7 +78,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 50.0,
                 color: Colors.grey[850],
               ),
-              const SizedBox(height: 30,),
+              const SizedBox(height: 25,),
               const Row(
                 children: [
                   SizedBox(width:20,),
@@ -87,7 +87,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Text('User123',style: TextStyle(fontSize: 16 , color: Color(0xff898121)),),
                 ],
               ),
-              const SizedBox(height: 40,),
+              const SizedBox(height: 30,),
               const Row(
                 children: [
                   SizedBox(width: 20.0,),
@@ -96,7 +96,33 @@ class _ProfilePageState extends State<ProfilePage> {
                   Text('test@gmail.com', style: TextStyle(color: Color(0xff898121),fontSize: 16.0),),
                 ],
               ),
-
+              const SizedBox(height: 30,),
+              const Row(
+                children: [
+                  SizedBox(width:20,),
+                  Text('Gender :', style: TextStyle(fontSize: 20,color: Color(0xff445d48)),),
+                  SizedBox(width: 30,),
+                  Text('Male',style: TextStyle(fontSize: 16 , color: Color(0xff898121)),),
+                ],
+              ),
+              const SizedBox(height: 30,),
+              const Row(
+                children: [
+                  SizedBox(width: 20.0,),
+                  Text('Phone Number :', style: TextStyle(color:Color(0xff445D48),fontSize: 20.0),),
+                  SizedBox(width: 30.0,),
+                  Text('9871235467', style: TextStyle(color: Color(0xff898121),fontSize: 16.0),),
+                ],
+              ),
+              const SizedBox(height: 30,),
+              const Row(
+                children: [
+                  SizedBox(width: 20.0,),
+                  Text('Instagram :', style: TextStyle(color:Color(0xff445D48),fontSize: 20.0),),
+                  SizedBox(width: 30.0,),
+                  Text('user._.123', style: TextStyle(color: Color(0xff898121),fontSize: 16.0),),
+                ],
+              ),
 
             ],
           ),

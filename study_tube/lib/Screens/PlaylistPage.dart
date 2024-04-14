@@ -17,7 +17,7 @@ Future<List<PlaylistInfo>> fetchVideos(String playlistId) async {
 
   if (response.statusCode == 200) {
     List<PlaylistInfo> videoInfoList = [];
-    //If the server did return a 200 0K response,
+    // If the server did return a 200 0K response,
     // then parse the JSON.
   final data = json.decode(response.body.toString()) as Map<String, dynamic>;
   List items = data['items'] as List<dynamic>;
