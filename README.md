@@ -23,7 +23,7 @@ StudyTube provides a curated and distraction-free environment for educational co
 - **Database**: Firestore 
 - **Authentication**: Firebase Authentication
 - **Logo**: Adobe Illustrator
-- 
+
 ## Installation and Usage
 
 ## Firebase Hosting 
