@@ -148,6 +148,12 @@ class _HomePageState extends State<HomePage> {
                                           softWrap: false,
                                           overflow: TextOverflow.clip,
                                         ),
+                                        Text(
+                                          "Progress:"+snapshot.data![index].progress
+                                              .toString()+"%",
+                                          softWrap: false,
+                                          overflow: TextOverflow.clip,
+                                        ),
 
                                         Align(
                                           alignment: Alignment.centerRight,
