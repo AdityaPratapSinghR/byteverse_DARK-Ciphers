@@ -106,6 +106,7 @@ class _HomePageState extends State<HomePage> {
                         height: MediaQuery.of(context).size.height / 2,
                         child: new ListView.builder(
                           itemCount: snapshot.data?.length,
+                          reverse: true,
                           itemBuilder: (context, index) {
                             return GestureDetector(
                               onTap: () {
@@ -116,35 +117,38 @@ class _HomePageState extends State<HomePage> {
                                 );
                               },
                               child: Card(
-                                child: Row(
-                                  children: [
-                                    Image.network(
-                                      snapshot.data![index].thumbUrl,
-                                      width: MediaQuery.of(context).size.width / 3,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    new Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            snapshot.data![index].title,
-                                            style: new TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                            softWrap: false,
-                                            overflow: TextOverflow.clip,
-                                          ),
-                                          Text(
-                                            snapshot.data![index].numOfVids
-                                                .toString(),
-                                            softWrap: false,
-                                            overflow: TextOverflow.clip,
-                                          ),
-                                          Divider()
-                                        ]),
-                                  ],
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: [
+                                      Image.network(
+                                        snapshot.data![index].thumbUrl,
+                                        width: MediaQuery.of(context).size.width / 3,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      new Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              snapshot.data![index].title,
+                                              style: new TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                              softWrap: false,
+                                              overflow: TextOverflow.clip,
+                                            ),
+                                            Text(
+                                              snapshot.data![index].numOfVids
+                                                  .toString(),
+                                              softWrap: false,
+                                              overflow: TextOverflow.clip,
+                                            ),
+                                            Divider()
+                                          ]),
+                                    ],
+                                  ),
                                 ),
                               ),
                             );
@@ -262,3 +266,4 @@ Stream<List<PlaylistInfo>> fetchUserPlaylistAndShow(String userId) async* {
     yield []; // Yield an empty list in case of an error
   }
 }
+
