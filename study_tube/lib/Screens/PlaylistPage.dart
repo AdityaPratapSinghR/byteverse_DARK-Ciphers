@@ -14,7 +14,7 @@ Future<List<PlaylistInfo>> fetchVideos(String playlistId) async {
           playlistId +
           "&key=" +
           key +
-          "&maxResults=10";
+          "&maxResults=50";
 
   final response = await http.get(Uri.parse(url));
 
@@ -106,7 +106,6 @@ class _PlaylistPageState extends State<PlaylistPage> {
                 return new ListView.builder(
                     itemCount: snapshot.data?.length,
                     itemBuilder: (context, index) {
-
                       return GestureDetector(
                         onTap: (){
                           String videoId = snapshot.data![index].videoId;
@@ -115,7 +114,7 @@ class _PlaylistPageState extends State<PlaylistPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => VideoPageWeb(videoId: videoId),
+                                builder: (context) => VideoPageWeb(videoId: videoId,title: snapshot.data![index].title,),
                               ),
                             );
                           } else {
@@ -143,7 +142,7 @@ class _PlaylistPageState extends State<PlaylistPage> {
                 return new Text("${snapshot.error}");
               }
               //By default, show a loading spinner
-              return new CircularProgressIndicator();
+              return Center(child: new CircularProgressIndicator());
             },
           ),
         ),
