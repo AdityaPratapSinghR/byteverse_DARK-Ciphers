@@ -203,7 +203,5 @@ String getTime(int second){
   }else{
     time = "$second";
   }
-
-
   return time;
 }
