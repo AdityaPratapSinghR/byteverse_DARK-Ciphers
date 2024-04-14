@@ -143,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                                           overflow: TextOverflow.clip,
                                         ),
                                         Text(
-                                          snapshot.data![index].numOfVids
+                                          "Videos:"+snapshot.data![index].numOfVids
                                               .toString(),
                                           softWrap: false,
                                           overflow: TextOverflow.clip,
