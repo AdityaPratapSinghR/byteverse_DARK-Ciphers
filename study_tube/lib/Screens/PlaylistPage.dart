@@ -3,6 +3,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../Util/VideoInfo.dart';
 import '../Util/routes.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+
+import 'VideoPageWeb.dart';
 
 Future<List<PlaylistInfo>> fetchVideos(String playlistId) async {
   String key = "AIzaSyBURViMCgdBTr5FMB2yNOgNxv-4sM3V238";
@@ -107,10 +110,22 @@ class _PlaylistPageState extends State<PlaylistPage> {
                       return GestureDetector(
                         onTap: (){
                           String videoId = snapshot.data![index].videoId;
-                          Navigator.of(context).pushNamed(
-                            MyRoutes.videoPage,
-                            arguments: videoId,
-                          );
+                          if (kIsWeb) {
+                            // running on the web!
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => VideoPageWeb(videoId: videoId),
+                              ),
+                            );
+                          } else {
+                            // NOT running on the web! You can check for additional platforms here.
+                            Navigator.of(context).pushNamed(
+                              MyRoutes.videoPage,
+                              arguments: videoId,
+                            );
+                          }
+
                         },
                         child: new Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
