@@ -2,6 +2,7 @@ import 'package:app/Util/PlaylistInfo.dart';
 import 'package:app/Util/routes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -24,6 +25,7 @@ class _HomePageState extends State<HomePage> {
     final playlistController = TextEditingController();
     String userID = "";
     userID = FirebaseAuth.instance.currentUser!.uid;
+    deletePlaylistItem(userID, "PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL");
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -35,138 +37,148 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SafeArea(
           child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 20,
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                      contentPadding:
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                  contentPadding:
                       EdgeInsets.symmetric(vertical: 1, horizontal: 13),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(
-                            color: Colors.black26,
-                          )),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(
-                            color: Colors.black26,
-                          )),
-                      hintText: "Enter playlist link",
-                      hintStyle: TextStyle(fontSize: 13, color: Colors.black26)),
-                  controller: playlistController,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                InkWell(
-                  onTap: () => {
-                    // print(getPlaylistIdFromLink(playlistController.value.text)),
-                    addPlaylistItem(userID,
-                        getPlaylistIdFromLink(playlistController.value.text), 0),
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text("Adding Playlist! Please Wait!"),
-                    )),
-                  },
-                  child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                      alignment: Alignment.center,
-                      height: 42,
-                      width: double.infinity,
-                      decoration: const ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
-                        color: primaryColorLight,
-                      ),
-                      child: const Text(
-                        "Get Playlist",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(
+                        color: Colors.black26,
                       )),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "Your Playlists",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                new StreamBuilder(
-                  stream: fetchUserPlaylistAndShow(userID),
-                  builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                    if (snapshot.hasData) {
-                      print("My Title" + snapshot.data.toString());
-                      return Container(
-                        height: MediaQuery.of(context).size.height / 2,
-                        child: new ListView.builder(
-                          itemCount: snapshot.data?.length,
-                          reverse: true,
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                String playlistId = snapshot.data![index].playlistId;
-                                Navigator.of(context).pushNamed(
-                                  MyRoutes.playlistPage,
-                                  arguments: playlistId,
-                                );
-                              },
-                              child: Card(
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    children: [
-                                      Image.network(
-                                        snapshot.data![index].thumbUrl,
-                                        width: MediaQuery.of(context).size.width / 3,
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      new Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              snapshot.data![index].title,
-                                              style: new TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                              softWrap: false,
-                                              overflow: TextOverflow.clip,
-                                            ),
-                                            Text(
-                                              snapshot.data![index].numOfVids
-                                                  .toString(),
-                                              softWrap: false,
-                                              overflow: TextOverflow.clip,
-                                            ),
-                                            Divider()
-                                          ]),
-                                    ],
-                                  ),
-                                ),
-                              ),
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(
+                        color: Colors.black26,
+                      )),
+                  hintText: "Enter playlist link",
+                  hintStyle: TextStyle(fontSize: 13, color: Colors.black26)),
+              controller: playlistController,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () => {
+                // print(getPlaylistIdFromLink(playlistController.value.text)),
+                addPlaylistItem(userID,
+                    getPlaylistIdFromLink(playlistController.value.text), 0),
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text("Adding Playlist! Please Wait!"),
+                )),
+              },
+              child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  alignment: Alignment.center,
+                  height: 42,
+                  width: double.infinity,
+                  decoration: const ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    color: primaryColorLight,
+                  ),
+                  child: const Text(
+                    "Get Playlist",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  )),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              "Your Playlists",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            StreamBuilder(
+              stream: fetchUserPlaylistAndShow(userID),
+              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                if (snapshot.hasData) {
+                  print("My Title" + snapshot.data.toString());
+                  return Container(
+                    height: MediaQuery.of(context).size.height / 1.65,
+                    child: new ListView.builder(
+                      itemCount: snapshot.data?.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            String playlistId =
+                                snapshot.data![index].playlistId;
+                            Navigator.of(context).pushNamed(
+                              MyRoutes.playlistPage,
+                              arguments: playlistId,
                             );
                           },
-                        ),
-                      );
-                    } else if (snapshot.hasError) {
-                      return new Text("${snapshot.error}");
-                    }
-                    return new Align(
-                      child: CircularProgressIndicator(),
-                      alignment: Alignment.center,
-                    );
-                  },
-                ),
-              ],
+                          child: Card(
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  Image.network(
+                                    snapshot.data![index].thumbUrl,
+                                    width:
+                                        MediaQuery.of(context).size.width / 3,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  new Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          snapshot.data![index].title,
+                                          style: new TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                          softWrap: false,
+                                          overflow: TextOverflow.clip,
+                                        ),
+                                        Text(
+                                          snapshot.data![index].numOfVids
+                                              .toString(),
+                                          softWrap: false,
+                                          overflow: TextOverflow.clip,
+                                        ),
+
+                                        Align(
+                                          alignment: Alignment.centerRight,
+                                          child: GestureDetector(
+                                            onTap: () {
+                                               showAlertDialog(context, userID,  snapshot.data![index].playlistId);
+                                            },
+                                            child: Icon(Icons.delete),
+                                          ),
+                                        )
+                                      ]),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return new Text("${snapshot.error}");
+                }
+                return new Align(
+                  child: CircularProgressIndicator(),
+                  alignment: Alignment.center,
+                );
+              },
             ),
-          )),
+          ],
+        ),
+      )),
     );
   }
 
@@ -190,6 +202,79 @@ class _HomePageState extends State<HomePage> {
       print('Error adding playlist item: ${e.message}');
     }
   }
+
+  Future<void> deletePlaylistItem(String userId, String playlistId) async {
+    final firestore = FirebaseFirestore.instance;
+    final docRef = firestore.collection(userId).doc("playlist");
+
+    try {
+      // Get the current playlists array
+      final docSnapshot = await docRef.get();
+      final playlists = docSnapshot.data()?['playlists'];
+
+      // Find the index of the playlist item with the specified playlistId
+      final index =
+          playlists.indexWhere((item) => item['playlistId'] == playlistId);
+
+      if (index != -1) {
+        // Remove the playlist item at the found index
+        playlists.removeAt(index);
+
+        // Update the document with the updated playlists array
+        await docRef.set({
+          'playlists': playlists,
+        });
+
+        print('Playlist item deleted successfully!');
+        setState(() {});
+      } else {
+        print('Playlist item with playlistId $playlistId not found!');
+      }
+    } on FirebaseException catch (e) {
+      print('Error deleting playlist item: ${e.message}');
+    }
+  }
+  showAlertDialog(BuildContext context, String userId, String playlistId) {
+
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      child: Text("Cancel"),
+      onPressed:  () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget continueButton = TextButton(
+      child: Text("Yes"),
+      onPressed:  () {
+        deletePlaylistItem(userId, playlistId);
+        setState(() {
+
+        });
+        Navigator.of(context).pop();
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Deleting Playlist! Please Wait!"),
+        ));
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Delete?"),
+      content: Text("Would you like to delete this playlist?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 }
 
 String getPlaylistIdFromLink(String link) {
@@ -210,7 +295,6 @@ String getPlaylistIdFromLink(String link) {
   }
 }
 
-
 Stream<List<PlaylistInfo>> fetchUserPlaylistAndShow(String userId) async* {
   CollectionReference userIdDb = FirebaseFirestore.instance.collection(userId);
   DocumentReference playlist = userIdDb.doc("playlist");
@@ -220,9 +304,9 @@ Stream<List<PlaylistInfo>> fetchUserPlaylistAndShow(String userId) async* {
     final value = await playlist.get();
     List<PlaylistDB> playlists = (value['playlists'] as List<dynamic>)
         .map((item) => PlaylistDB(
-      playlistId: item['playlistId'],
-      progress: item['progress'],
-    ))
+              playlistId: item['playlistId'],
+              progress: item['progress'],
+            ))
         .toList();
 
     for (int i = 0; i < playlists.length; i++) {
@@ -260,10 +344,10 @@ Stream<List<PlaylistInfo>> fetchUserPlaylistAndShow(String userId) async* {
         throw Exception('Failed to load playlist information');
       }
     }
-    yield playListInfoList;
+    List<PlaylistInfo> reversedPlaylistInfoList = playListInfoList.reversed.toList();
+    yield reversedPlaylistInfoList;
   } catch (error) {
     print("Failed to fetch data: $error");
     yield []; // Yield an empty list in case of an error
   }
 }
-
